@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Syllabus Calendar Converter</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Syllabus Calendar Converter</h1>
+            <p>Upload your syllabus and convert it to calendar events</p>
+        </header>
+
+        <main class="main-content">
+            <div class="upload-section">
+                <div class="upload-area" id="uploadArea">
+                    <div class="upload-content">
+                        <svg class="upload-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="7,10 12,15 17,10"></polyline>
+                            <line x1="12" y1="15" x2="12" y2="3"></line>
+                        </svg>
+                        <h3>Upload Your Syllabus</h3>
+                        <p>Drag and drop your syllabus file here, or click to browse</p>
+                        <p class="file-types">Supports: PDF, DOCX, TXT, Images</p>
+                        <input type="file" id="fileInput" accept=".pdf,.docx,.txt,.png,.jpg,.jpeg" multiple>
+                    </div>
+                </div>
+
+                <div class="text-input-section">
+                    <h3>Or paste your syllabus text directly:</h3>
+                    <textarea id="textInput" placeholder="Paste your syllabus content here..."></textarea>
+                </div>
+
+                <div class="action-buttons">
+                    <button id="parseBtn" class="btn btn-primary" disabled>Parse Syllabus</button>
+                    <button id="clearBtn" class="btn btn-secondary">Clear All</button>
+                </div>
+            </div>
+
+            <div class="results-section" id="resultsSection" style="display: none;">
+                <h2>Extracted Events</h2>
+                <div class="events-list" id="eventsList"></div>
+                
+                <div class="export-section">
+                    <h3>Export to Calendar</h3>
+                    <div class="export-buttons">
+                        <button id="exportIcsBtn" class="btn btn-success">Download .ics File</button>
+                        <button id="exportGoogleBtn" class="btn btn-google">Add to Google Calendar</button>
+                        <button id="exportOutlookBtn" class="btn btn-outlook">Add to Outlook</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <div class="loading-overlay" id="loadingOverlay" style="display: none;">
+            <div class="loading-spinner"></div>
+            <p>Processing your syllabus...</p>
+        </div>
+    </div>
+
+    <script src="js/calendar-generator.js"></script>
+    <script src="js/text-parser.js"></script>
+    <script src="js/file-handler.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
